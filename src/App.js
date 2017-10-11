@@ -5,7 +5,6 @@ import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducters';
 import Router from './Router';
-import LoginForm from './components/LoginForm';
 
 class App extends React.Component {
     componentWillMount() {
