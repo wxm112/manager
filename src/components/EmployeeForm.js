@@ -7,7 +7,6 @@ import { CardSection, Input } from './common';
 class EmployeeForm extends Component {
 
     render() {
-        console.log(this.props);
         return (
             <View>
                 <CardSection>
@@ -16,7 +15,7 @@ class EmployeeForm extends Component {
                         placeholder="Jane"
                         value={this.props.name}
                         onChangeText={
-                            text => this.props.employeeUpdate({ props: 'name', value: text })
+                            text => this.props.employeeUpdate({ prop: 'name', value: text })
                         }
                     />
                 </CardSection>
@@ -26,7 +25,7 @@ class EmployeeForm extends Component {
                         placeholder="555-555-5555"
                         value={this.props.phone}
                         onChangeText={
-                            text => this.props.employeeUpdate({ props: 'phone', value: text })
+                            text => this.props.employeeUpdate({ prop: 'phone', value: text })
                         }
                     />
                 </CardSection>
@@ -35,7 +34,7 @@ class EmployeeForm extends Component {
                     <Picker
                         selectedValue={this.props.shift}
                         onValueChange={value => this.props.employeeUpdate(
-                            { props: 'shift', value })
+                            { prop: 'shift', value })
                             }
                     >
                         <Picker.Item label="Mon" value="Mon" />
@@ -64,4 +63,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, { employeeUpdate })(EmployeeForm);
-

@@ -2,20 +2,19 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EmployeeForm from './EmployeeForm';
-import { employeeUpdate } from '../actions';
+import { employeeUpdate, employeeSave } from '../actions';
 import { Card, CardSection, Button } from './common';
 
 class EmployeeEdit extends Component {
     componentWillMount() {
         _.each(this.props.employee, (value, prop) => {
-            console.log(`EmployeeEdit pass prop=${prop}, value=${value} to employeeUpdate action`);
             this.props.employeeUpdate({ prop, value });
         });
     }
 
     onButtonPress() {
-        const { name, phone, shift } = this.props.employee;
-        console.log(name, phone, shift);
+        const { name, phone, shift } = this.props;
+        this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid });
     }
 
     render() {
@@ -38,4 +37,4 @@ const mapStateFToProps = (state) => {
     return { name, phone, shift };
 };
 
-export default connect(mapStateFToProps, { employeeUpdate })(EmployeeEdit);
+export default connect(mapStateFToProps, { employeeUpdate, employeeSave })(EmployeeEdit);
